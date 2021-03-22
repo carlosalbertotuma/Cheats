@@ -3,7 +3,7 @@
 # Enumerando a rede 192.168.0.0/24 , procurando portas 21,2121 possiveis porta FTP abertas --open, -Pn nao utilizar ping.
 # Otimizando a pesquisa, com apenas -sS (SYN Scan) e criamos a lista de hosts -oG, -v (verbose). 
 
-nmap -v -sS -p21,2121 --open -Pn 191.168.0.0/24 -oG ftp-21-2121-open.txt
+nmap -v -sS -p21,2121 --open -Pn 192.168.0.0/24 -oG ftp-21-2121-open.txt
 
 # Ajustando a lista criada anteriormente, para uso em outros programas, removendo os comentarios ficando apenas os ips necessarios.
 
@@ -13,5 +13,5 @@ cat ftp-21-2121-open.txt | grep "Up" | cut -d " " -f 2 > targetsFTP
 # -sV para versão, e -A modo agressivo, logo criamos nossa lista para analise manual, 
 # obs: o tempo do scan vai depender da rede, conexão e processamento, lembrando que nem todas as redes permitem full scan -p- .
 
-nmap -v -sS -sV -A -p- --open -Pn 172.16.1.0/24 -oG full-open.txt
+nmap -v -sS -sV -A -p- --open -Pn 192.168.0.0/24 -oG full-open.txt
 
