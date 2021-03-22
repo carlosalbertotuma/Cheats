@@ -1,4 +1,4 @@
-# Enumeration FTP
+# FTP - Pentesting
 
 * Enumerando a rede 192.168.0.0/24 , procurando portas 21,2121 possiveis porta FTP abertas --open, -Pn nao utilizar ping.
 * Otimizando a pesquisa, com apenas -sS (SYN Scan) e criamos a lista de hosts -oG, -v (verbose). 
@@ -27,11 +27,11 @@
   wget -m --no-passive ftp://anonymous:anonymous@IP_SERVIDOR
 
 
-* Modulos do Metasploit
+# Modulos do Metasploit
   auxiliary/scanner/ftp/anonymous
   auxiliary/scanner/ftp/ftp_login
 
-* ftp_version ##
+# ftp_version 
   use auxiliary/scanner/ftp/ftp_version
   show options
   set RHOSTS 192.168.0.7  ## hosts ou targetsFTP.txt
