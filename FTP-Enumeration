@@ -1,0 +1,9 @@
+#
+#Enumeration FTP
+
+#Enumerando portas 21,2121 
+possiveis porta ftp abertas, criando a lista de hosts
+nmap -v -sS -p21,2121 --open 172.16.1.0/24 -oG ftp-21-2121-open.txt
+#
+cat ftp-21-2121-open.txt | grep "Up" | cut -d " " -f 2 > targetsFTP
+#
