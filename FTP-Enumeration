@@ -1,6 +1,6 @@
 # Enumeration FTP
 
-# Enumerando a rede 192.168.0.0/27 , procurando portas 21,2121 possiveis porta FTP abertas --open.
+# Enumerando a rede 192.168.0.0/24 , procurando portas 21,2121 possiveis porta FTP abertas --open.
 # Otimizando a pesquisa, com apenas -sS (SYN Scan) e criamos a lista de hosts -oG, -v (verbose).
 
 nmap -v -sS -p21,2121 --open 191.168.0.0/24 -oG ftp-21-2121-open.txt
