@@ -20,7 +20,7 @@
 
 * Com as portas e hosts com FTP rodando vamos utilizar o proprio nmap com os script para FTP, -iL utilizaremos a lista criada, lembrando apenas IP.
 
-nmap -v --script=ftp* -iL targetsFTP.txt
+  nmap -v --script=ftp* -iL targetsFTP.txt
 
 * Baixando tudo que estiver compartilhado utilizando usuario anonymous 
 
