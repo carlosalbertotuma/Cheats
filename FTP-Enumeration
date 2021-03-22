@@ -9,8 +9,8 @@ nmap -v -sS -p21,2121 --open -Pn 191.168.0.0/24 -oG ftp-21-2121-open.txt
 
 cat ftp-21-2121-open.txt | grep "Up" | cut -d " " -f 2 > targetsFTP
 
-# Caso queira fazer um full scan na rede a procura de serviços e descobrir outras portas FTP, podemos utilizar aa opcaos.
-# -sV para versao, e -A modo agressivo e descobrir os serviços, criamos nossa lista para analise manual.
+# Caso desejar fazer um full scan na rede, a procura de serviços e descobrir outras portas FTP, podemos utilizar as opções.
+# -sV para versão, e -A modo agressivo, logo criamos nossa lista para analise manual.
 
 nmap -v -sS -sV -A -p- --open -Pn 172.16.1.0/24 -oG full-open.txt
 
