@@ -540,7 +540,6 @@ do
             "2") # Brute de compartilhamentos Host - null session
             		echo "Digite o IP alvo:"
             		read ip
-           		#for share in ${shares[*]}; do
             		for shares in $(cat $share); do
             		saida=$(smbclient -U '%' -N \\\\$ip\\$shares -c '')
             		if [[ -z $saida ]]; then
