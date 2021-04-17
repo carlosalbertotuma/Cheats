@@ -30,7 +30,8 @@ do
     # Imprimindo as opções do menu
     echo
     echo "Inf Gathering # Enumeração # Scan # Exploração"
-    echo -e "\e[33;1;5m.... Pentest Jr # Carlos Tuma # Bl4dsc4n ....\e[0m" "\e[33;5mSw1tchbl4d3 Ver 1.0.1\e[0m"      
+    echo -e "\e[33;1mDesenvolvido por: Pentest Jr # Carlos Tuma # Bl4dsc4n\e[0m" 
+    echo -e "\e[31;1mLivre uso e modificação, mantenha o crédito em comentário\e[0m" "\e[32;1;5mSw1tchbl4d3 Ver 1.0.1\e[0m"           
     echo "----------------------------------------------------------------------------------------------------"
     echo '| 1 - Scan Serviços & Vuln Nmap 11- Brute Force de SubDomain    21- Criando Reverse Shell MSFvenom  |'
     echo '| 2 - Scan Arquivos Gobuster    12- Baixar arquivos do ftp      22- Dirsearch                       |'
