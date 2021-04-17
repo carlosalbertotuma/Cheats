@@ -47,7 +47,7 @@ do
     echo '| 9 - Identificar WAF           19- PingSweep Scan              29- Google Hack                     |'
     echo '| 10 - Sslscan                  20- Enumerando Arq. SMB netbios 30- Gerando Wordlista Personalizada |'
     echo '|                                                                                                   |'
-    echo '| 0 - Sair                                                                    Sw1tchbl4d3 Ver 1.0   |'
+    echo '| 0 - Sair                                                                    Sw1tchbl4d3 Ver 1.0.0 |'
     echo "----------------------------------------------------------------------------------------------------"
     #echo "$cidade, $datahoje" 
     echo
@@ -862,13 +862,16 @@ do
                     read usuario
                     echo "Digite p=senha ou P=listaSenha Ex: P"
                     read listasenha
+		    
                     if [ "listasenha" == "P" ]
 	            then
                           echo "Digite o caminho da wordlista"
                           read wordlista5
-		          hydra -$lista $usuario -$listasenha $wordlista5 ssh://$ip
+			  hydra -$lista $usuario -$listasenha $wordlista5 ssh://$ip
 	            else
-		          hydra -$lista $usuario -$listasenha $wordlista ssh://$ip
+		          echo "Digite a Senha"
+			  read senha
+		          hydra -$lista $usuario -$listasenha $senha ssh://$ip
                     fi
            ;;
 
