@@ -44,7 +44,7 @@ do
     echo '| 6 - Scan joomla joomscan      16- Comandos do Sistema         26- Esteganografia                  |'
     echo '| 7 - Clonando Dominio          17- Exploração LFI linux        27- Brute Force                     |'
     echo '| 8 - Recon WhatWeb Tecnologias 18- Convertendo Bases           28- Infecção de Log SSH - LFI linux |'
-    echo '| 9 - Identificar WAF/IPS       19- PingSweep Scan              29- Google Hack                     |'
+    echo '| 9 - Identificar WAF           19- PingSweep Scan              29- Google Hack                     |'
     echo '| 10 - Sslscan                  20- Enumerando Arq. SMB netbios 30- Gerando Wordlista Personalizada |'
     echo '|                                                                                                   |'
     echo '| 0 - Sair                                                                    Sw1tchbl4d3 Ver 1.0   |'
