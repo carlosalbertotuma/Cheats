@@ -61,7 +61,7 @@ do
     # Lê o número armazenado na variável 'OPCAO' e executa a opção correspondente.
     case $OPCAO in
 ########################################## Nmap #####################################################################
-        1)  # Scan NMAP - OK Testar verificar mais scan 
+        1)  # Scan NMAP  
 	    echo "1) Scan Discovery/Personalizado"
             echo "2) Enumerando NetBios Os-discovery"
             echo "3) Scan Scripts FTP"
@@ -149,7 +149,7 @@ do
 
 
 ############################################## gobuster #############################################################
-        2)  # Gobuster - OK Testar
+        2)  # Gobuster 
             echo "1) DNS subdomain bruteforcing"
             echo "2) Directory/file brutceforcing"
           
@@ -199,7 +199,7 @@ do
 
 ############################################### Wpscan ##############################################################
 
-        3)  # Wpscan - OK Testar
+        3)  # Wpscan 
             echo "1) Scan Plugins Vulneraveis"
 	    echo "2) Scan Enumerando usuarios"
             echo "3) Scan disable-tls-checks"	
@@ -247,7 +247,7 @@ do
 	    ;;
 
 ############################################## sqlmap ###############################################################
-	4)  # sql DATABASE / sqlmap TABLES / sqlmap COLUNA / sqlmap DUMP - OK falta testar
+	4)  # sql DATABASE / sqlmap TABLES / sqlmap COLUNA / sqlmap DUMP 
             
 	    echo "1) Scan Databases SQLMAP"
 	    echo "2) Scan Tabelas SQLMAP"
@@ -298,7 +298,7 @@ do
 	    ;;
 
 ################################################### Pesquisa DNS ##################################################
-        5)  # Pesquisa DNS - OK
+        5)  # Pesquisa DNS 
             
 	    echo "1) Localizando IP do dominio IPV4"
 	    echo "2) Localizando Servidor Email"
@@ -347,48 +347,48 @@ do
 	    ;;
 
 ################################################### joomscan ######################################################
-	6)  # joomscan - OK falta testar
+	6)  # joomscan 
             echo "Digite o Dominio alvo:"
             read ip
             joomscan -ec -r -u $ip
 	    ;;
 
 #################################################### clonando dominio ##############################################
-	7)  # Clonando dominio - OK testar
+	7)  # Clonando dominio 
             echo "Digite o dominio alvo:"
             read dominio
             wget -m $dominio
 	    ;;
 
 #################################################### Recon WhatWeb ################################################
-	8)  # Recon WhatWeb - OK
+	8)  # Recon WhatWeb 
             echo "Digite o dominio alvo:"
             read dominio1
             whatweb $dominio1
 	    ;;
 
 ################################################### Wafw00f #########################################################
-        9)  # Identificar WAF - OK 
+        9)  # Identificar WAF  
             echo "Digite o Domino"
             read dominio
             wafw00f $dominio
             ;;
 ################################################### sslscan #########################################################
-       10)  # #sslscan 
+       10)  # Sslscan 
             echo "Digite o dominio Alvo"
             read alvo
             sslscan $alvo
             ;;
 
 ##########################################  Brute Force de SubDomain ################################################	
-       11)  # Brute Force de SubDomain - OK
+       11)  # Brute Force de SubDomain 
             echo "Digite o Dominio:"
             read dominio2
             for subdominios1 in $(cat $listadominios1);do host $subdominios1.$dominio2 | grep "has address";done   
             ;;
 
 ############################################## FTP ################################################################
-       12)  # Baixando arquivos do ftp - Testar
+       12)  # Baixando arquivos do ftp 
             echo "Digite o IP do alvo"
             read ip
             echo "Digite o usuario"
@@ -399,7 +399,7 @@ do
             ;;
 
 ###################################################################################################################
-       13) # Transferencia de Zona - OK
+       13) # Transferencia de Zona 
             echo "Digite o dominio"
             read dominio
             echo "_________________________________"
@@ -407,7 +407,7 @@ do
 	    ;;
 
 ############################################# onesixtyone #########################################################            
-       14) # Onesixtyone - OK
+       14) # Onesixtyone 
             echo "Digite o IP alvo"
             read ip
             echo "Digite o Caminho da lista de communities ou Enter"
@@ -421,21 +421,21 @@ do
             ;;
 
 ############################################# enum4linux ###########################################################
-       15)  # enum4linux - OK testar verificar opcoes
+       15)  # enum4linux 
             echo "Digite o IP alvo:"
             read ip
             enum4linux -a $ip
             ;;
 
 ############################################# Comandos do Sistema ###################################################
-       16)  # Comandos do sistema - OK
+       16)  # Comandos do sistema 
             echo "Digite o Comando do Sistema"
 	    read comando
             $comando
 	    ;;
 
 ##################################################  LFI linux  ######################################################	
-       17)  # Exploração LFI linux - OK testar
+       17)  # Exploração LFI linux 
             echo "Digite o local com LFI ex: domino/arquivo.php?="
             read local2
             echo "Digite o arquivo ex: etc/passwd"
@@ -452,7 +452,7 @@ do
             ;;
 
 ############################################ nbtscan ################################################################
-        18)  # Convertendo Base64| md5sum | sha256sum | sha512sun -OK
+        18)  # Convertendo Base64| md5sum | sha256sum | sha512sun 
             
 	    echo "1) Convertendo Arquivo.txt em Base64"
 	    echo "2) Convertendo Texto em Md5"
@@ -520,7 +520,7 @@ do
             ;;
 
 ############################################ smbclient ##############################################################
-        20)  # Enumerando Arquivos SMB netbios - OK
+        20)  # Enumerando Arquivos SMB netbios 
             
 	    echo "1) Enumerando compar. - null session - smbclient"
 	    echo "2) Brute de compartilhamentos - null session"
@@ -561,7 +561,7 @@ do
 
 
 ############################################# MsfVenom #############################################################
-        21)  # Criando Reverse Shell MSFvenom - OK
+        21)  # Criando Reverse Shell MSFvenom 
             echo "1) Meterpreter Reverse TCP Shell - Windows x86"
             echo "2) Reverse HTTPS Shell - Windows"
             echo "3) Encoded Meterpreter Reverse HTTPS Shell - Windows"
@@ -704,7 +704,7 @@ do
             ;;
 
 ############################################## dirsearch ###########################################################
-         22)  # dirsearch - OK
+         22)  # dirsearch 
             echo "1) Procura normal"
             echo "2) Procura Recursiva"
             read -n2 -p 'Opção: ' resp8
@@ -750,7 +750,7 @@ do
             ;;
 
 ########################################## Metodos HTTP curl ######################################################
-	24)  # Analisando Metodos HTTP - OK
+	24)  # Analisando Metodos HTTP 
             echo "Digite o IP or Dom/Pasta ex: 192.168.1.1/pasta"
             read ip
             echo "Digite o Metodo HTTP ex: OPTIONS"
@@ -759,7 +759,7 @@ do
             ;;
 
 ######################################### WEBDAV ##################################################################
-	25)  # Injetando webshell.php WEBDAV - OK
+	25)  # Injetando webshell.php WEBDAV 
             echo "1) Executar comandos do sistema webshell.php WEBDAV"
 	    echo "2) Shell Reverse com nc"
           	  
@@ -795,7 +795,7 @@ do
 	    ;;
 
 #####################################################################################################################
-        26) # Esteganografia - OK
+        26) # Esteganografia 
             echo "1) Esconder Arquivo em Foto .jpg"
 	    echo "2) Extrair Arquivo de Foto .jpg"
             echo "3) Instalar o Steghide"
@@ -827,7 +827,7 @@ do
 	    ;;
 
 ###################################################################################################################
-       27) # Brute Force - Falta testar...
+       27) # Brute Force 
             echo "1) Brute de Hash por Formato"
 	    echo "2) Brute SSH Hydra"
             echo "3) Brute Hash - hashCat"
@@ -950,7 +950,7 @@ do
 
 
 ###################################################################################################################
-       28)  # Infecção de Log SSH - LFI linux - OK
+       28)  # Infecção de Log SSH - LFI linux 
            echo "1) Infectando Log SSH - LFI"
            echo "2) Explorando Infec Log SSH - LFI"
            
@@ -983,7 +983,7 @@ do
            ;;
 
 ###################################################################################################################
-        29)  #  Google Hack - OK
+        29)  #  Google Hack 
             echo "1) Instalar o Lynx"
             echo "2) Google Hack"
             read -n1 -p 'Opção: ' resp11
@@ -1005,7 +1005,7 @@ do
             ;;
 
 ###################################################################################################################
-       30)  # Gerando Wordlista Personalizada - OK
+       30)  # Gerando Wordlista Personalizada 
             echo "Cuidado ao criar wordlist com muitos caracters, ficara enorme"
             echo 
             echo "1) Gerando wordlist letras minúsculas e maiúsculas"
