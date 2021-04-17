@@ -29,13 +29,9 @@ while :
 do
     # Imprimindo as opções do menu
     echo
-    echo '/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\'
-    echo '|                        ###################################################                        |'
-    echo '|                     #### Inf Gathering # Enumeração # Scan # Exploração ####                      |'
-    echo '|                   ### -------------------------------------------------- ####                     |'
-    echo '|                #######        Pentest Jr # Carlos Tuma # Bl4dsc4n       #######                   |'
-    echo '|              ###################################################################                  |'
-    echo '|                                                                                                   |'
+    echo "Inf Gathering # Enumeração # Scan # Exploração"
+    echo -e "\e[33;1;5m.... Pentest Jr # Carlos Tuma # Bl4dsc4n ....\e[0m" "\e[33;5mSw1tchbl4d3 Ver 1.0.1\e[0m"      
+    echo "----------------------------------------------------------------------------------------------------"
     echo '| 1 - Scan Serviços & Vuln Nmap 11- Brute Force de SubDomain    21- Criando Reverse Shell MSFvenom  |'
     echo '| 2 - Scan Arquivos Gobuster    12- Baixar arquivos do ftp      22- Dirsearch                       |'
     echo '| 3 - Scan WordPress Wpscan     13- Transferencia de Zona       23- PortScan                        |'
