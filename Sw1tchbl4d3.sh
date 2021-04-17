@@ -44,7 +44,7 @@ do
     echo '| 9 - Identificar WAF           19- PingSweep Scan              29- Google Hack                     |'
     echo '| 10 - Sslscan                  20- Enumerando Arq. SMB netbios 30- Gerando Wordlista Personalizada |'
     echo '|                                                                                                   |'
-    echo '| 0 - Sair                                                                    Sw1tchbl4d3 Ver 1.0.0 |'
+    echo '| 0 - Sair                                                                                          |'
     echo "----------------------------------------------------------------------------------------------------"
     #echo "$cidade, $datahoje" 
     echo
