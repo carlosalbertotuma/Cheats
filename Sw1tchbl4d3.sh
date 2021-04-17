@@ -1129,27 +1129,3 @@ do
             ;;
     esac
 done
-
-
-
-############################
-#parsing HTML
-#if [ "$1" == "" ]
-#then
-#	echo "DESEC - PARSING - HTML"
-#	echo "Modo de uso: $0 DOMINIO"
-#	echo "Exemplo: $0 bussinescorp.com.br"
-#else
-#dominio="$1"
-#echo "Digite o Dominio"
-#read dominio
-#wget "$dominio"
-#grep href index.html | cut -d "/" -f 3 | grep "\." | cut -d '"' -f 1 | grep -v "<l" > lista
-#for url in $(cat lista);
-#do 
-#echo "----------------------"
-#host $url;
-#rm -rf index.html
-#done
-#fi
-##############
