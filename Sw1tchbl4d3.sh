@@ -310,34 +310,34 @@ do
 	    
 	    "1") # Localizando IP do dominio IPV4
             		 echo "Digite o domino:"
-            		 read dominio2
-		         host -t A $dominio2
+            		 read dominio
+		         host -t A $dominio
             ;;
 
 	    "2")  # Localizando Servidor Email
             		 echo "Digite o dominio:"
-            		 read dominio2
+            		 read dominio
 			 host -t mx $dominio
             ;;
 	    "3")  # Localizando Servidores DNS
             		 echo "Digite o dominio:"
-            		 read dominio2
+            		 read dominio
 			 host -t ns $dominio
             		 
             ;;
             "4")  # HINFO
             		 echo "Digite o dominio:"
-            		 read dominio2
+            		 read dominio
 			 host -t hinfo $dominio
             ;;
 	    "5")  # Localizando IPV6 do dominio
             		 echo "Digite o dominio:"
-            		 read dominio2
+            		 read dominio
 			 host -t aaaa $dominio
             ;;
 	    "6")  # Localizando TXT info
             		 echo "Digite o dominio:"
-            		 read dominio2
+            		 read dominio
 			 host -t txt $dominio
       
 	    esac
