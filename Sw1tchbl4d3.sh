@@ -1100,7 +1100,7 @@ do
             ;;
  
             "8") # Gerar wordlist por Dominio - OK testar dnvo
-            	    echo "Digite o dominio base da Wordlist ex: google.com"
+            	    echo "Digite o dominio base da Wordlist ex: https://www.google.com"
             	    read url
             	    echo "Digite um nome para sua Wordlist ex: lista"
             	    read wordlista
