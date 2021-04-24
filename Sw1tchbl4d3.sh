@@ -709,13 +709,52 @@ do
 	    case $resp8 in
 
 	    "1") ## Procura normal
-                       echo "Digite o IP/pasta ou Dominio/pasta alvo:"
+                       echo "Digite o Dominio/pasta alvo:"
                        read ip
-                       echo "Digite os status para excluir Ex: 403,500"
+                       echo "Digite status para excluir Ex: 403,500"
             	       read status
-                       echo "Digite os Tipos de as extensão (php,txt,cgi)"
+                       echo "Digite Tipos de as extensão (php,txt,cgi)"
                        read opgobuster
-                       python3 $dirb -u $ip --wordlist=$arquivosbrute -e $opgobuster -x $status 
+                       echo "Digite o caminho da wordlist ou Enter"
+                       read wordlista3
+                       if [ "$opgobuster" == "" ]
+  	               then
+  	                     if [ "$wordlista3" == "" ]
+  	                     then
+  	                           if [ "$status" == "" ]
+  	                           then
+		                         python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 
+		                   else
+		                         python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 -x $status
+		                   fi
+		             else
+		                   if [ "$status" == "" ]
+  	                           then
+                                         python3 $dirb -u $ip --wordlist=$wordlista3 -f -e $opgobuster1
+		                   else
+     		                         python3 $dirb -u $ip --wordlist=$wordlista3 -f -e $opgobuster1 -x $status     
+		                   fi
+		                        
+		             fi      
+	               else
+                             if [ "$wordlista3" == "" ]
+  	                     then
+  	                           if [ "$status" == "" ]
+  	                           then
+		                        python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster 
+		                   else
+		                        python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster -x $status
+		                   fi
+		             else
+		                   if [ "$status" == "" ]
+  	                           then
+		                        python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster 
+		                   else
+		                        python3 $dirb -u $ip --wordlist=$wordlista3 -f -e $opgobuster -x $status
+		                   fi     
+		             fi    
+                       fi
+                        
                       
             ;;
   
@@ -726,9 +765,46 @@ do
             	       read status
                        echo "Digite os Tipos de as extensão (php,txt,cgi)"
                        read opgobuster
-                       python3 $dirb -r -u $ip --wordlist=$arquivosbrute -e $opgobuster -x $status 
-            esac	    
-            ;; 
+                       echo "Digite o caminho da wordlist ou Enter"
+                       read wordlista3
+                       if [ "$opgobuster" == "" ]
+  	               then
+  	                     if [ "$wordlista3" == "" ]
+  	                     then
+  	                           if [ "$status" == "" ]
+  	                           then
+		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 
+		                   else
+		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 -x $status
+		                   fi
+		             else
+		                   if [ "$status" == "" ]
+  	                           then
+  	                                python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster1 
+  	                           else
+		                        python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster1 -x $status
+		                   fi     
+		             fi      
+	               else
+                             if [ "$wordlista3" == "" ]
+  	                     then
+  	                           if [ "$status" == "" ]
+  	                           then
+		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster 
+		                   else
+		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster -x $status
+		                   fi     
+		             else
+		                   if [ "$status" == "" ]
+  	                           then
+		                        python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster 
+		                   else
+		                        python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster -x $status
+		                   fi     
+		             fi    
+                      fi 
+         esac	    
+         ;; 
 
 ##############################################################################################################
 	 23)  # PortScan
