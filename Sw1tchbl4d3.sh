@@ -1,6 +1,7 @@
 #!/bin/bash
 ################################################################################
-## Setar as Variaveis  de acordo com suas tools e wordlist !!!!!!
+## Setar as Variaveis  de acordo com suas tools e wordlist !!!! aqui em baixo ##
+################################################################################
 opnmap1="-sS -sV -sC -A -Pn"
 portas="-p-"
 opgobuster1="php,txt,html,sh,cgi,js,css,py,bak,pdf,doc,docx,xml"
