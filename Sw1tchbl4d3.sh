@@ -49,7 +49,7 @@ do
     echo -e "\e[31;1mLivre uso e modificação, mantenha o crédito em comentário\e[0m" "\e[32;1;5mSw1tchbl4d3\e[0m"         
     echo '------------------------------------------------------------------------------------------------------------------------------------'
     echo '| 1 - Scan Serviços & Vuln Nmap  12- Baixar arquivos do ftp 	        23- PortScan                       34) commix POST         |     ▀▀░░░░░░░░░░░░░▀▀' 
-    echo '| 2 - Scan Arquivos Gobuster     13- Transferencia de Zona            24- Analisando Metodos HTTP        35) command Injection Post|   ▀░░░░░░░░░░░░░░░░░░░▀'
+    echo '| 2 - Scan Arquivos Gobuster     13- Transferencia de Zona            24- Analisando Metodos HTTP        35) command Injection Post|   ▀░░░░░░RedTeam░░░░░░▀'
     echo '| 3 - Scan WordPress Wpscan      14- Onesixtyone                      25- Modulo WEBDAV inj. shell.php                             |   │░░░░░░░░░░░░░░░░░░░│'
     echo '| 4 - Scan SQLMAP                15- Enum4linux                       26- Esteganografia                                           |  ▐│░░Sw1tchbl4d3 v2.0░│▐' 
     echo '| 5 - Pesquisa DNS               16- Comandos do Sistema              27- Brute Force                                              |  ░└┐░░░░░Bl4dsc4n░░░░┌┘░'
