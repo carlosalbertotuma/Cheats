@@ -1379,7 +1379,7 @@ do
             ex -s -c '%s/ //e|%s/]//e|x' domainTakeOver
             awk -F "," '{print $1}' domainTakeOver > dominios 
             awk -F "[" '{print $2}' domainTakeOver > portas
-            echo "gauplus";awk '{print $1}' dominios | gauplus --random-agent -t 25 -b ttf,woff,svg,png,jpg | tee -a links
+            echo "gauplus";awk '{print $1}' dominios | gauplus -random-agent -t 25 -b ttf,woff,svg,png,jpg | tee -a links
             echo "qsreplace";cat links | qsreplace | tee -a links2 
             echo "procurando js e json";awk '/\.js|\.json/ {print $1}' links2 > json_files 
             echo "procurando paramentos";awk '/\=/ {print $1}' links2 | tee -a ssrf sqli xss lfi idor redirect rce
