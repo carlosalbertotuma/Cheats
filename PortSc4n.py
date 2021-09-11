@@ -2,7 +2,6 @@ import socket
 
 def scan():
     Banner()
-    ip = "0"
     portaI = int(input("Digite a porta Inicial:"))
     portaF = int(input("Digite a porta Final:"))
     ip = input("Digite o Ip Alvo:")
