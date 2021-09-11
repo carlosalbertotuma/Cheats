@@ -7,7 +7,6 @@ def scan():
     ip = input("Digite o Ip Alvo:")
     
     for porta in range(portaI,portaF):
-        print("Scaneando IP: {} na porta {}" .format(ip,porta))
         conexao = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         resp = conexao.connect_ex((ip,porta))
 
