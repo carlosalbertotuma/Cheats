@@ -14,7 +14,7 @@ def scan():
         if (resp == 0):
             print("Porta {} Aberta" .format(porta))
         else:
-	        print("Porta {} Fechada" .format(porta))
+	    print("Porta {} Fechada" .format(porta))
             
 
 def Banner():
