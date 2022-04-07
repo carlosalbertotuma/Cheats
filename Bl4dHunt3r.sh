@@ -30,9 +30,9 @@ for e in $(cat links2-$dominio);do curl -w 'Status:%{http_code}\t Size:%{size_do
 echo "Localizando Json"
 cat code_achados.txt | grep "200" | awk '/\.js|\.json/ {print $3}' | tee -a json_files
 echo "Localizando Parametros"
-cat code_achados.txt | egrep "200|403|500" | egrep -v "\.ttf|\.woff|\.svg|\.|\.gif|\.woff2|.\ico|.eot" | awk '/\=/ {print $3}' | tee -a parametros_files
+cat code_achados.txt | egrep "200|403|500" | grep -v "\.ttf|\.woff|\.svg|\.|\.gif|\.woff2|.\ico|.eot" | awk '/=/ {print $3}' | tee -a parametros_files
 echo "Localizados links ativos"
-cat code_achados.txt | egrep "200|403|500" |  awk '/\=/ {print $3}' | tee -a todos_files
+cat code_achados.txt | egrep "200|403|500" |  awk '/=/ {print $3}' | tee -a todos_files
 echo "Baixandos arquivos json"
 for f in $(cat json_files);do wget $f -q 2>/dev/null;done 
 fdupes -N -d . 1>/dev/null
