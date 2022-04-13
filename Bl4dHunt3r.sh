@@ -47,8 +47,8 @@ echo "â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•â–ˆâ–ˆâ�
 echo -e "â•šâ•â•â•â•â•â• â•šâ•â•â•â•â•â•â•â•šâ•â•â•šâ•â•â•â•â•â• â•šâ•â•  â•šâ•â• â•šâ•â•â•â•â•â• â•šâ•â•  â•šâ•â•â•â•   â•šâ•â•   â•šâ•â•â•â•â•â• â•šâ•â•  â•šâ•â•      â•šâ•â•â•â• â•šâ•â• â•šâ•â•â•â•â•â• â•šâ•â•â•šâ•â•â•â•â•â•â•\e[0m"
 
 echo -e "Creditos: Bl4dSc4n\e[0m"
-echo -e "\e[1;20;50mLivre uso e modificaÃ§Ã£o, mantenha os crÃ©ditos em comentÃ¡rio.\e[0m"
-echo -e "\e[1;31;50mPs: NÃ£o faÃ§am teste em dominios sem permissÃ£o\e[0m"
+echo -e "\e[1;20;50mLivre uso e modificação, mantenha os creditos em comentario.\e[0m"
+echo -e "\e[1;31;50mPs: Não façam teste em dominios sem permissão\e[0m"
 echo -e "\e[10;32mDigite o dominio\e[0m"
 read dominio
 mkdir $dominio
@@ -57,10 +57,10 @@ cd $dominio
 echo -e "$git1\n $git2\n $git3\n $git4\n $git5\n $git6\n $git7\n $git8\n $git9\n $git10\n $git11\n $git12\n $git13\n $git14\n $arq1\n $arq2\n $arq3\n $arq4\n" > git.txt
 echo -e "$wp1\n $wp2\n $wp3\n $wp4\n $wp5\n $wp6\n $wp7\n $wp8\n $wp9\n $wp10\n $wp11\n $wp12\n $wp13\n $wp14\n $wp15\n $wp16\n $wp17\n $wp18\n $wp19\n $wp20\n" > wp.txt
 
-echo -e "\e[1;33;40mEscolha a OPÃ‡ÃƒO de Recon\e[0m"
+echo -e "\e[1;33;40mEscolha a Opção de Recon\e[0m"
 echo -e "Procurar dominio Unico = U // Subdominios = S // Sub-Sub = SS\e[0m"
 
-read -n2 -p 'OpÃ§Ã£o: ' opcao 
+read -n2 -p 'Opção: ' opcao 
 if [ $opcao == "U" ];
 then
     echo -e "\e[1;32mProcurando Dominio Unico\e[0m"
