@@ -63,20 +63,17 @@ echo -e "Procurar dominio Unico = U // Subdominios = S // Sub-Sub = SS\e[0m"
 read -n2 -p 'OpÃ§Ã£o: ' opcao 
 if [ $opcao == "U" ];
 then
-    echo 1
     echo -e "\e[1;32mProcurando Dominio Unico\e[0m"
     echo $dominio  > sub4-$dominio
 
 elif [ $opcao == "S" ];
 then
-    echo 2
     echo -e "\e[1;32mProcurando Dominios e Subdominios\e[0m"
     #findomain -q -t $dominio | tee -a sub-$dominio
     subfinder -d $dominio -silent -o sub4-$dominio
     
 elif [ $opcao == "SS" ];
 then
-    echo 3
     echo -e "\e[1;32mProcurando Dominios, Sub-sub \e[0m"
     findomain -q -t $dominio | tee sub-$dominio
     echo $dominio >> sub-$dominio
@@ -141,7 +138,7 @@ read -n2 -p 'Teste em WordPress? S ou N: ' opcao1
 
 if [ $opcao1 == "N" ];
 then
-   echo -e "\e[1;32mProcurando Git Explose\e[0m"
+   echo -e "\e[1;32mProcurando Git Explosed\e[0m"
    for o in $(cat git.txt);do cat sub4-$dominio | httpx -silent -threads 100 -paths $o -title -status-code;done
 
 elif [ $opcao1 == "S" ];
