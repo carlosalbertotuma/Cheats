@@ -69,7 +69,6 @@ then
 elif [ $opcao == "S" ];
 then
     echo -e "\e[1;32mProcurando Dominios e Subdominios\e[0m"
-    #findomain -q -t $dominio | tee -a sub-$dominio
     subfinder -d $dominio -silent -o sub4-$dominio
     
 elif [ $opcao == "SS" ];
@@ -124,7 +123,6 @@ done
 
 echo -e "\e[1;32m Verificando status dos links\e[0m"
 httpx -silent -status-code -random-agent -threads 50 -content-length -l links-$dominio  | tee -a code_achados.txt
-####httpx -silent -title -tech-detect -status-code -random-agent -cdn -cname -threads 100 -ip -content-length -x ALL
 
 echo -e "\e[1;32m Localizando Json\e[0m"
 cat  code_achados.txt | grep "200" | awk '/\.js|\.json/ {print $1}' | tee -a json_files
