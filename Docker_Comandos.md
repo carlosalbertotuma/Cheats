@@ -127,3 +127,17 @@ Também podemos direcionar para o "load" "<"
 Para remover uma imagem do nosso repositorio local utilizamos a opcao "rmi"
 
 # docker rmi imageParaRemover
+
+
+-------------------
+# Laboratorios para pentest & ethical hacker
+- docker run -d -p 80:80 raesene/bwapp
+- http://localhost:8080/install.php
+- senha: bee:bug
+---------------------
+- sudo docker run --rm -it -p 8080:80 vulnerables/web-dvwa&
+- http://localhost/dvwa/setup.php
+- docker run -p 8080:80 vulnerables/web-dvwa
+- senha: admin:password
+---------------------------------------
+- sudo docker run --rm -it -p 9090:9090 -d appsecco/dvna:sqlite
