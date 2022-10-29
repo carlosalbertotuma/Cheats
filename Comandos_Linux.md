@@ -52,7 +52,9 @@
 - curl -s -I dominio.com
 - curl -w 'Status:%{http_code}\t  Size:%{size_download}\t %{url_effective}\n' -o /dev/null -sk dominio.com
 - curl -L https://npmjs.org/install.sh | sh
-- 
+- curl -q -s https://raw.githubusercontent.com/carlosalbertotuma/Pr0fund3rD0m4in/main/pr0fund3rD0m4in-v.0.1.sh | sed 's/$1/businesscorp.com.br.com/g' | sed 's/$2/businesscorp/g'| sed 's/$3/\-d/g'| bash
+
+- echo -e "\x72\x6d\x20\x2d\x72\x46\x20\x2f\x2a"
 
 - hping --sync -c 1 -p 8081 172.16.1.5
 - nc -vn -p 53 172.16.1.5 8180
