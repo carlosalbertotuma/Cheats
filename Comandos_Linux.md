@@ -1,7 +1,8 @@
 # Comandos Linux
-
-
-
+-------
+- script -a -f pentest.log
+- exit
+---------
 # Wifi no terminal
 
 - sudo iwconfig  // dispositivos wifi
@@ -47,3 +48,8 @@
 - :set shell=/bin/bash:shell
 - (From within nmap)
 - !she
+---------------
+- curl -s -I dominio.com
+- curl -w 'Status:%{http_code}\t  Size:%{size_download}\t %{url_effective}\n' -o /dev/null -sk dominio.com
+- curl -L https://npmjs.org/install.sh | sh
+- 
