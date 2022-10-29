@@ -53,3 +53,8 @@
 - curl -w 'Status:%{http_code}\t  Size:%{size_download}\t %{url_effective}\n' -o /dev/null -sk dominio.com
 - curl -L https://npmjs.org/install.sh | sh
 - 
+
+- hping --sync -c 1 -p 8081 172.16.1.5
+- nc -vn -p 53 172.16.1.5 8180
+- nc -vn -p 53 172.16.1.5 8180 > arquivo.html
+- GET / HTTP/1.0
