@@ -22,3 +22,6 @@ wget2 --spider -rH vulnweb.com | grep "Adding URL:" | cut -d " " -f 3 | egrep "h
 podemos salvar em um arquivo
 
 wget2 --spider -rH vulnweb.com | grep "Adding URL:" | cut -d " " -f 3 | egrep "http|https" | tee -a arq.txt
+
+
+curl -sk "http://web.archive.org/cdx/search/cdx?url=*.vulnweb.com/*&output=txt&fl=original" | sort -u
