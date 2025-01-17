@@ -24,4 +24,6 @@ podemos salvar em um arquivo
 wget2 --spider -rH vulnweb.com | grep "Adding URL:" | cut -d " " -f 3 | egrep "http|https" | tee -a arq.txt
 
 
+OSINT web.archive.org
+
 curl -sk "http://web.archive.org/cdx/search/cdx?url=*.vulnweb.com/*&output=txt&fl=original" | sort -u
